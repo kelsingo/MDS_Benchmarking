@@ -1,16 +1,16 @@
-function MDS_main(subj_id)
+function MDS_main(subj_id, len)
 
 addpath(genpath('/oak/stanford/groups/menon/software/spm8/'));
 addpath(genpath('./Library_SR/'));
 
 TR = 0.72;
 % L = round(32/TR);          % Embedded Dimension
-L = round(15/TR);          % Embedded Dimension
+L = round(len/TR);          % Embedded Dimension
 method = 'L2_woi';
 
 project_path = '';
 data_path = '';
-result_path = 'result/null_model/';
+result_path = sprintf('result/window_%d_20260313', len);
 if ~exist(result_path)
     mkdir(result_path);
 end
@@ -41,7 +41,8 @@ data_subjects{1}.data = data1.data(subj_id);
 
 % setting output file
 current_id = data_subjects{1}.data(1).subjectID; 
-result_fname = fullfile(result_path, ['LR_' current_id '_15_L.mat']);
+result_fname = fullfile(result_path, sprintf('LR_%s_%d_L.mat', current_id, len));
+fprintf(result_fname);
 
 for subj = 1:length(data_subjects{1}.data)
     fprintf('processing subject: %s\n\n', data_subjects{1}.data(subj).subjectID);
