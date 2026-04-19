@@ -1,3 +1,5 @@
+This repo contains code from: https://github.com/scsnl/Cai_HCP_WM_MDSI_Controllability_2021
+
 # Cai_HCP_WM_MDSI_Controllability_2021
 
 MATLAB implementation for benchmarking **white-matter controllability** and **MDSI-based analysis** using Human Connectome Project (HCP) data.
